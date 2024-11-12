@@ -1,0 +1,27 @@
+import java.util.HashMap;
+public class Main {
+    public boolean checkDuplicatesWithinK(int[] arr, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (map.containsKey(arr[i])) {
+                if (i - map.get(arr[i]) <= k) {
+                    return true;
+                }
+            }
+            map.put(arr[i], i);
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        Main solution = new Main();
+        int[] arr1 = {1, 2, 3, 4, 1, 2, 3, 4};
+        int k1 = 3;
+        System.out.println(solution.checkDuplicatesWithinK(arr1, k1)); 
+        int[] arr2 = {1, 2, 3, 1, 4, 5};
+        int k2 = 3;
+        System.out.println(solution.checkDuplicatesWithinK(arr2, k2)); 
+        int[] arr3 = {6, 8, 4, 1, 8, 5, 7};
+        int k3 = 3;
+        System.out.println(solution.checkDuplicatesWithinK(arr3, k3)); 
+    }
+}
